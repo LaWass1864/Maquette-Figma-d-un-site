@@ -2,9 +2,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
@@ -20,31 +19,70 @@
   @keyframes floatUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
   @keyframes slowZoom { from { transform:scale(1.02); } to { transform:scale(1.14); } }
   a { color:inherit; text-decoration:none; }
+
+  /* --- RESPONSIVE FIXES --- */
+  @media (max-width: 768px) {
+    nav { padding: 15px 20px !important; }
+    nav > div:last-child { display: none !important; }
+  }
+
+  @media (max-width: 900px) {
+    section[style*="grid-template-columns:repeat(4,1fr)"] {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    section[id="medias"] div[style*="grid-template-columns:repeat(3,1fr)"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 50px !important; }
+    .hero-content { padding: 0 20px !important; }
+    section > div { grid-template-columns: 1fr !important; }
+  }
+
+  /* Responsive Burger Menu */
+@media (max-width: 768px) {
+  #burger-btn { display: block !important; }
+  #nav-links {
+    display: none !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background: rgba(12,12,14,0.95);
+    padding: 30px 20px;
+    gap: 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  #nav-links.active { display: flex !important; }
+}
 </style>
 </helmet>
 
 <div style="--accent:{{ accent }}; background:#0c0c0e; color:#f4f1ea; font-family:'Archivo',sans-serif; min-height:100vh; overflow-x:hidden; position:relative;">
 
   <!-- NAV -->
-  <nav style="position:{{ navPosition }}; top:0; left:0; right:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:18px 40px; backdrop-filter:blur(14px); background:rgba(12,12,14,0.72); border-bottom:1px solid rgba(255,255,255,0.07);">
-    <a href="#top" style="display:flex; align-items:center; gap:12px;">
-      <span style="width:11px; height:11px; background:var(--accent,#e1621d); display:inline-block; transform:rotate(45deg);"></span>
-      <span style="font-family:'Anton',sans-serif; font-size:18px; letter-spacing:2px; text-transform:uppercase;">Guilhem Angui</span>
-    </a>
-    <div style="display:flex; align-items:center; gap:34px; font-size:12.5px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase;">
-      <a href="#parcours" style="color:#cbc8c0; transition:color .25s;" style-hover="color:#ffffff;">Parcours</a>
-      <a href="#objectifs" style="color:#cbc8c0; transition:color .25s;" style-hover="color:#ffffff;">Objectifs</a>
-      <a href="#medias" style="color:#cbc8c0; transition:color .25s;" style-hover="color:#ffffff;">Médias</a>
-      <a href="#sponsoring" style="display:inline-flex; align-items:center; gap:8px; background:var(--accent,#e1621d); color:#0c0c0e; padding:10px 18px; font-weight:800; transition:transform .25s, filter .25s;" style-hover="transform:translateY(-2px); filter:brightness(1.12);">Devenir partenaire</a>
-    </div>
-  </nav>
+<nav style="position:{{ navPosition }}; top:0; left:0; right:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:18px 40px; backdrop-filter:blur(14px); background:rgba(12,12,14,0.72); border-bottom:1px solid rgba(255,255,255,0.07);">
+  <a href="#top" style="display:flex; align-items:center; gap:12px;">
+    <span style="width:11px; height:11px; background:var(--accent,#e1621d); display:inline-block; transform:rotate(45deg);"></span>
+    <span style="font-family:'Anton',sans-serif; font-size:18px; letter-spacing:2px; text-transform:uppercase;">Guilhem Angui</span>
+  </a>
+
+  <button id="burger-btn" style="display:none; background:none; border:none; color:#f4f1ea; font-size:24px; cursor:pointer; padding:5px;">☰</button>
+
+  <div id="nav-links" style="display:flex; align-items:center; gap:34px; font-size:12.5px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase;">
+    <a href="#parcours" style="color:#cbc8c0; transition:color .25s;">Parcours</a>
+    <a href="#objectifs" style="color:#cbc8c0; transition:color .25s;">Objectifs</a>
+    <a href="#medias" style="color:#cbc8c0; transition:color .25s;">Médias</a>
+    <a href="#sponsoring" style="display:inline-flex; align-items:center; gap:8px; background:var(--accent,#e1621d); color:#0c0c0e; padding:10px 18px; font-weight:800;">Devenir partenaire</a>
+  </div>
+</nav>
 
   <!-- HERO -->
   <header id="top" style="position:relative; width:100%; min-height:94vh; display:flex; align-items:flex-end; overflow:hidden;">
-    <video autoplay muted loop playsinline poster="assets/fight-smoke.png" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:grayscale(1) contrast(1.12) brightness(0.82); z-index:0; animation:slowZoom 18s ease-in-out infinite alternate;">
-      <!-- Déposez votre vidéo dans assets/hero.mp4 puis décommentez la ligne ci-dessous : -->
-      <!-- <source src="assets/hero.mp4" type="video/mp4"> -->
-    </video>
+    <video autoplay muted loop playsinline poster="assets/fight-smoke.png" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:grayscale(1) contrast(1.12) brightness(0.82); z-index:0; animation:slowZoom 18s ease-in-out infinite alternate;"></video>
     <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(12,12,14,0.97) 2%, rgba(12,12,14,0.35) 45%, rgba(12,12,14,0.55) 100%); z-index:1;"></div>
     <div style="position:absolute; inset:0; background:linear-gradient(to right, rgba(12,12,14,0.6), transparent 55%); z-index:1;"></div>
 
@@ -59,25 +97,6 @@
       <p style="max-width:480px; margin-top:24px; font-size:16px; line-height:1.6; color:#cdcac2;">
         « Écris ton histoire et marques les esprits. » Boxeur amateur, triple champion régional, en route vers le titre national.
       </p>
-
-      <div style="margin-top:36px; display:inline-flex; align-items:stretch; flex-wrap:wrap; gap:0; border:1px solid rgba(255,255,255,0.2); background:rgba(12,12,14,0.45); backdrop-filter:blur(6px);">
-        <div style="padding:18px 26px; border-right:1px solid rgba(255,255,255,0.18);">
-          <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--accent,#e1621d); margin-bottom:8px; font-weight:700;">Prochain combat</div>
-          <div style="font-family:'Anton',sans-serif; font-size:26px; letter-spacing:0.5px;">15 NOV 2025</div>
-        </div>
-        <div style="padding:18px 26px; border-right:1px solid rgba(255,255,255,0.18); display:flex; flex-direction:column; justify-content:center;">
-          <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#a7a49c;">Lieu</div>
-          <div style="font-size:15px; font-weight:700;">Paris Arena</div>
-        </div>
-        <div style="padding:18px 26px; display:flex; flex-direction:column; justify-content:center;">
-          <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#a7a49c;">Enjeu</div>
-          <div style="font-size:15px; font-weight:700;">Championnat</div>
-        </div>
-      </div>
-    </div>
-
-    <div style="position:absolute; bottom:24px; right:40px; z-index:2; display:flex; align-items:center; gap:10px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#a7a49c;">
-      <span style="width:8px; height:8px; border-radius:50%; background:var(--accent,#e1621d); animation:none;"></span> Showreel · Le Noble Art
     </div>
   </header>
 
@@ -290,67 +309,88 @@
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#e1621d&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;stickyNav&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
-class Component extends DCLogic {
-  componentDidMount() {
-    if (typeof window === 'undefined') return;
-    const setup = () => {
-      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const els = Array.from(document.querySelectorAll('[data-reveal]'));
-      if (!els.length) return;
-      if (reduce || !('IntersectionObserver' in window)) return;
-      els.forEach((el) => {
-        const d = (parseInt(el.getAttribute('data-ri'), 10) || 0) * 80;
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(34px)';
-        el.style.transition = 'opacity .85s cubic-bezier(.16,.7,.25,1) ' + d + 'ms, transform .85s cubic-bezier(.16,.7,.25,1) ' + d + 'ms';
-        el.style.willChange = 'opacity, transform';
-      });
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.style.opacity = '1';
-            e.target.style.transform = 'none';
-            io.unobserve(e.target);
-          }
+  class Component extends DCLogic {
+    componentDidMount() {
+      if (typeof window === 'undefined') return;
+
+      // 1. Logique Reveal (IntersectionObserver)
+      const setup = () => {
+        const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const els = Array.from(document.querySelectorAll('[data-reveal]'));
+        if (!els.length) return;
+        if (reduce || !('IntersectionObserver' in window)) return;
+        els.forEach((el) => {
+          const d = (parseInt(el.getAttribute('data-ri'), 10) || 0) * 80;
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(34px)';
+          el.style.transition = 'opacity .85s cubic-bezier(.16,.7,.25,1) ' + d + 'ms, transform .85s cubic-bezier(.16,.7,.25,1) ' + d + 'ms';
+          el.style.willChange = 'opacity, transform';
         });
-      }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
-      els.forEach((el) => io.observe(el));
-    };
-    requestAnimationFrame(() => requestAnimationFrame(setup));
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.style.opacity = '1';
+              e.target.style.transform = 'none';
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
+        els.forEach((el) => io.observe(el));
+      };
+
+      // 2. Logique Menu Burger
+      const burger = document.getElementById('burger-btn');
+      const links = document.getElementById('nav-links');
+      
+      if (burger && links) {
+        burger.addEventListener('click', () => {
+          links.classList.toggle('active');
+        });
+        
+        // Fermer le menu lors du clic sur un lien
+        links.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            links.classList.remove('active');
+          });
+        });
+      }
+
+      requestAnimationFrame(() => requestAnimationFrame(setup));
+    }
+
+    renderVals() {
+      return {
+        accent: this.props.accent ?? '#e1621d',
+        navPosition: (this.props.stickyNav ?? true) ? 'fixed' : 'absolute',
+        timeline: [
+          { year: '2005', title: 'La passion commence', detail: 'À 5 ans, Guilhem enfile ses premiers gants. Le ring devient son terrain de jeu.' },
+          { year: '2012', title: 'Débute la compétition', detail: 'À 12 ans, premiers combats officiels et premières sensations face à l\u2019adversaire.' },
+          { year: '2016', title: '17 victoires, 1 défaite', detail: '3× Champion de Seine-Saint-Denis et d\u2019Île-de-France. La régularité s\u2019installe.' },
+          { year: '2018', title: 'Devient boxeur amateur', detail: 'Passage dans la catégorie amateur et montée en intensité des entraînements.' },
+          { year: '2019', title: 'Champion d\u2019Île-de-France', detail: 'Titre régional Amateur Cadet — une étape clé dans la progression.' },
+          { year: '2022', title: '1er combat international', detail: 'Première sortie hors des frontières, conclue par une victoire décisive.' },
+        ],
+        objectifs: [
+          { num: '01', label: 'Champion d\u2019Île-de-France' },
+          { num: '02', label: 'Champion de France' },
+          { num: '03', label: 'Vainqueur des Ceintures Montana' },
+          { num: '04', label: 'Remporter des combats internationaux' },
+          { num: '05', label: 'Ne jamais arrêter de voir les choses en grand' },
+        ],
+        benefices: [
+          'Profiter de l\u2019image et de la beauté du noble art pour affirmer ses valeurs.',
+          'Faire de la publicité de manière originale et mémorable.',
+          'Véhiculer une image positive d\u2019aide et de soutien à un jeune athlète passionné.',
+        ],
+        engagements: [
+          'De la visibilité via ma page Instagram et mes publications TikTok.',
+          'Une initiation à la boxe, si vous le désirez, pour partager ma passion.',
+          'Votre logo sur mon équipement, mes panneaux publicitaires et mes photographies.',
+          'Une invitation à chacune de mes prestations de boxe.',
+        ],
+      };
+    }
   }
-  renderVals() {
-    return {
-      accent: this.props.accent ?? '#e1621d',
-      navPosition: (this.props.stickyNav ?? true) ? 'fixed' : 'absolute',
-      timeline: [
-        { year: '2005', title: 'La passion commence', detail: 'À 5 ans, Guilhem enfile ses premiers gants. Le ring devient son terrain de jeu.' },
-        { year: '2012', title: 'Débute la compétition', detail: 'À 12 ans, premiers combats officiels et premières sensations face à l\u2019adversaire.' },
-        { year: '2016', title: '17 victoires, 1 défaite', detail: '3× Champion de Seine-Saint-Denis et d\u2019Île-de-France. La régularité s\u2019installe.' },
-        { year: '2018', title: 'Devient boxeur amateur', detail: 'Passage dans la catégorie amateur et montée en intensité des entraînements.' },
-        { year: '2019', title: 'Champion d\u2019Île-de-France', detail: 'Titre régional Amateur Cadet — une étape clé dans la progression.' },
-        { year: '2022', title: '1er combat international', detail: 'Première sortie hors des frontières, conclue par une victoire décisive.' },
-      ],
-      objectifs: [
-        { num: '01', label: 'Champion d\u2019Île-de-France' },
-        { num: '02', label: 'Champion de France' },
-        { num: '03', label: 'Vainqueur des Ceintures Montana' },
-        { num: '04', label: 'Remporter des combats internationaux' },
-        { num: '05', label: 'Ne jamais arrêter de voir les choses en grand' },
-      ],
-      benefices: [
-        'Profiter de l\u2019image et de la beauté du noble art pour affirmer ses valeurs.',
-        'Faire de la publicité de manière originale et mémorable.',
-        'Véhiculer une image positive d\u2019aide et de soutien à un jeune athlète passionné.',
-      ],
-      engagements: [
-        'De la visibilité via ma page Instagram et mes publications TikTok.',
-        'Une initiation à la boxe, si vous le désirez, pour partager ma passion.',
-        'Votre logo sur mon équipement, mes panneaux publicitaires et mes photographies.',
-        'Une invitation à chacune de mes prestations de boxe.',
-      ],
-    };
-  }
-}
 </script>
 </body>
 </html>
