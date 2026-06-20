@@ -1,0 +1,50 @@
+/* ============================================================
+   TYPOGRAPHY — a two-family system:
+   ANTON  : the fighter. Heavy condensed display, ALWAYS uppercase.
+   ARCHIVO: the corner-man. Clean grotesque for everything readable.
+   ============================================================ */
+:root {
+  /* — Families — */
+  --font-display: 'Anton', 'Arial Narrow', sans-serif;
+  --font-text:    'Archivo', system-ui, -apple-system, sans-serif;
+
+  /* — Weights (Archivo) — */
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semibold:600;
+  --fw-bold:    700;
+  --fw-extrabold:800;
+
+  /* — Display scale (Anton, line-height ~0.86, uppercase) —
+     Fluid clamps mirror the live site. */
+  --type-hero:      clamp(64px, 13vw, 200px);  /* fighter name */
+  --type-display-1: clamp(44px, 7vw, 108px);   /* "Rêver plus grand" */
+  --type-display-2: clamp(40px, 6.5vw, 100px); /* section openers */
+  --type-display-3: clamp(40px, 6vw, 82px);    /* section titles */
+  --type-display-4: clamp(36px, 5vw, 66px);    /* sub-section */
+  --type-headline:  26px;                       /* card / stat label */
+  --type-stat:      64px;                        /* record numerals */
+
+  /* — Text scale (Archivo) — */
+  --type-lead:   16px;   /* intros, line-height 1.6 */
+  --type-body:   15px;   /* paragraphs, line-height 1.65 */
+  --type-body-sm:14px;   /* card copy, line-height 1.6 */
+  --type-quote:  clamp(22px, 2.6vw, 34px); /* coach testimonial */
+
+  /* — Eyebrow / label (uppercase, tracked) — */
+  --type-label:    12px;
+  --type-label-sm: 11px;
+  --tracking-label:    2px;    /* eyebrows */
+  --tracking-label-lg: 2.5px;  /* hero badge */
+  --tracking-nav:      1.5px;  /* nav + footer links */
+
+  /* — Line heights — */
+  --lh-display: 0.88;
+  --lh-tight:   1.1;
+  --lh-body:    1.65;
+  --lh-quote:   1.4;
+
+  /* ---- Semantic aliases ---- */
+  --text-display-font: var(--font-display);
+  --text-body-font:    var(--font-text);
+}

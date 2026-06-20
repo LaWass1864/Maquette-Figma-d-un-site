@@ -1,0 +1,40 @@
+/* ============================================================
+   EFFECTS — motion, hover, shadow, image treatment.
+   Motion is purposeful and quick; one shared easing curve.
+   ============================================================ */
+:root {
+  /* — Easing — one curve does almost everything — */
+  --ease-out: cubic-bezier(.16, .7, .25, 1);
+
+  /* — Durations — */
+  --dur-fast:   .25s;  /* links, button lift */
+  --dur-med:    .35s;  /* card lift */
+  --dur-photo:  .65s;  /* image zoom in frame */
+  --dur-reveal: .85s;  /* scroll reveal */
+
+  /* — Scroll reveal — */
+  --reveal-shift: 34px;        /* translateY start */
+  --reveal-stagger: 80ms;      /* per-item delay in a list */
+
+  /* — Hover transforms — */
+  --lift-card:   translateY(-6px);
+  --lift-button: translateY(-2px);
+  --lift-cta:    translateY(-3px);
+  --zoom-photo:  scale(1.06);   /* tiles */
+  --zoom-photo-lg: scale(1.07); /* feature images */
+
+  /* — Shadows / halos (accent only; surfaces stay flat) — */
+  --shadow-cta:   0 14px 40px var(--ga-accent-shadow);
+  --ring-accent:  0 0 0 8px var(--ga-accent-glow);
+
+  /* — Image treatment —
+     Photography is desaturated at rest and warms to full colour
+     on hover. Hero footage runs full greyscale. */
+  --img-rest:  grayscale(0.2) contrast(1.05);
+  --img-hover: grayscale(0) contrast(1.08);
+  --img-hero:  grayscale(1) contrast(1.12) brightness(0.82);
+
+  /* — Backdrop blur (nav + glass panels over photos) — */
+  --blur-nav:   blur(14px);
+  --blur-glass: blur(6px);
+}

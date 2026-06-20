@@ -1,0 +1,15 @@
+<!-- @dsCard group="Spacing" viewport="700x170" subtitle="Sharp corners everywhere; the only curve is a full circle" name="Radii & marks" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css">
+<style>
+  body{margin:0;background:var(--ga-bg);padding:22px;font-family:var(--font-text);display:flex;align-items:center;gap:34px;}
+  .item{display:flex;flex-direction:column;align-items:center;gap:12px;color:var(--ga-muted-2);font-size:11px;font-family:monospace;}
+  .box{width:74px;height:74px;background:var(--ga-surface);border:1px solid var(--ga-line-2);}
+  .diamond{width:40px;height:40px;background:var(--ga-accent);transform:rotate(45deg);margin:17px;}
+  .circle{width:74px;height:74px;border-radius:50%;background:var(--ga-accent);display:flex;align-items:center;justify-content:center;}
+  .play{width:0;height:0;border-style:solid;border-width:11px 0 11px 18px;border-color:transparent transparent transparent #0c0c0e;margin-left:4px;}
+</style></head>
+<body>
+  <div class="item"><div class="box"></div>radius 0 · cards</div>
+  <div class="item"><div class="box"><div class="diamond"></div></div>square @45° · mark</div>
+  <div class="item"><div class="circle"><div class="play"></div></div>radius 999 · play</div>
+</body></html>

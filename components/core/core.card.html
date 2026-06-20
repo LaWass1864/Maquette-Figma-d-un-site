@@ -1,0 +1,80 @@
+<!-- @dsCard group="Components" viewport="700x600" subtitle="Button · Badge · StatCard · MediaCard · TimelineItem" name="Core" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin:0; background:var(--ga-bg); font-family:var(--font-text); padding:26px; }
+  .sec { margin-bottom:26px; }
+  .lab { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--ga-muted-2); margin-bottom:12px; }
+  .row { display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+  .stats { display:grid; grid-template-columns:repeat(3,1fr); border:1px solid var(--ga-line); }
+  .stats > div { border-right:1px solid var(--ga-line); }
+  .stats > div:last-child { border-right:none; }
+  .cards { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+</style>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" data-presets="react">
+  // Resolve components regardless of the generated bundle namespace.
+  function R(name){
+    for (const k of Object.keys(window)) {
+      const v = window[k];
+      if (v && typeof v === 'object' && typeof v[name] === 'function') return v[name];
+    }
+    return () => React.createElement('span', { style:{color:'#e1621d'} }, '⚠ '+name);
+  }
+  const Button = R('Button'), Badge = R('Badge'), StatCard = R('StatCard'),
+        MediaCard = R('MediaCard'), TimelineItem = R('TimelineItem');
+
+  function Demo(){
+    return (
+      <React.Fragment>
+        <div className="sec">
+          <div className="lab">Button</div>
+          <div className="row">
+            <Button icon="→">Devenir partenaire</Button>
+            <Button variant="ghost">En savoir plus</Button>
+            <Button variant="nav">Partenaire</Button>
+            <Button size="sm" variant="ghost">Petit</Button>
+          </div>
+        </div>
+        <div className="sec">
+          <div className="lab">Badge</div>
+          <div className="row">
+            <Badge>Boxe Anglaise · Amateur Élite</Badge>
+            <Badge bare>Les Objectifs</Badge>
+          </div>
+        </div>
+        <div className="sec">
+          <div className="lab">StatCard</div>
+          <div className="stats">
+            <StatCard value="30" label="Combats" />
+            <StatCard value="20" label="Victoires" tone="accent" />
+            <StatCard value="10" label="Défaites" tone="faint" />
+          </div>
+        </div>
+        <div className="sec">
+          <div className="lab">MediaCard</div>
+          <div className="cards">
+            <MediaCard title="Le Noble Art">La boxe amateur est un sport incroyable : la fatigue est vite oubliée lorsque le combat prend fin.</MediaCard>
+            <MediaCard title="Ses valeurs" accentTitle>Respect, discipline, humilité et dépassement de soi.</MediaCard>
+          </div>
+        </div>
+        <div className="sec">
+          <div className="lab">TimelineItem</div>
+          <TimelineItem year="2016" title="17 victoires, 1 défaite" detail="3× Champion de Seine-Saint-Denis et d'Île-de-France." />
+        </div>
+      </React.Fragment>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script>
+</body>
+</html>

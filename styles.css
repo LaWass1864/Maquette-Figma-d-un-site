@@ -1,0 +1,10 @@
+/* ============================================================
+   GUILHEM ANGUI — Design System
+   Single entry point. Consumers link THIS file only.
+   Contains @import lines exclusively.
+   ============================================================ */
+@import "tokens/fonts.css";
+@import "tokens/colors.css";
+@import "tokens/typography.css";
+@import "tokens/spacing.css";
+@import "tokens/effects.css";

@@ -1,0 +1,40 @@
+/* ============================================================
+   SPACING, LAYOUT & RADII
+   The grid is generous and the corners are SHARP. The only
+   curve in the whole system is a full circle (play button).
+   ============================================================ */
+:root {
+  /* — Spacing scale (px) — */
+  --space-1: 6px;
+  --space-2: 10px;
+  --space-3: 14px;   /* default gap between cards/tiles */
+  --space-4: 18px;
+  --space-5: 24px;
+  --space-6: 30px;
+  --space-7: 40px;   /* horizontal page padding */
+  --space-8: 54px;
+  --space-9: 66px;
+  --space-section: 96px;  /* vertical section rhythm */
+  --space-hero-bottom: 110px;
+
+  /* — Layout — */
+  --container-max: 1280px;
+  --page-gutter:   40px;
+
+  /* — Radii — SHARP system.
+     Square by default; the diamond mark is a square rotated 45°;
+     the only true radius is the circular media play button. */
+  --radius-none:   0px;
+  --radius-pill:   999px;   /* circle play button only */
+
+  /* — Mark sizes — */
+  --mark-sm: 7px;   /* eyebrow dot */
+  --mark-md: 11px;  /* logo diamond */
+  --mark-diamond: 9px; /* timeline node */
+
+  /* ---- Semantic aliases ---- */
+  --gap-grid:      var(--space-3);
+  --pad-section:   var(--space-section);
+  --pad-card:      30px 26px;
+  --radius-card:   var(--radius-none);
+}

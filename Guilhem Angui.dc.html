@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:#0c0c0e; }
+  ::selection { background:#e1621d; color:#0c0c0e; }
+  @keyframes floatUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes slowZoom { from { transform:scale(1.02); } to { transform:scale(1.14); } }
+  a { color:inherit; text-decoration:none; }
+</style>
+</helmet>
+
+<div style="--accent:{{ accent }}; background:#0c0c0e; color:#f4f1ea; font-family:'Archivo',sans-serif; min-height:100vh; overflow-x:hidden; position:relative;">
+
+  <!-- NAV -->
+  <nav style="position:{{ navPosition }}; top:0; left:0; right:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:18px 40px; backdrop-filter:blur(14px); background:rgba(12,12,14,0.72); border-bottom:1px solid rgba(255,255,255,0.07);">
+    <a href="#top" style="display:flex; align-items:center; gap:12px;">
+      <span style="width:11px; height:11px; background:var(--accent,#e1621d); display:inline-block; transform:rotate(45deg);"></span>
+      <span style="font-family:'Anton',sans-serif; font-size:18px; letter-spacing:2px; text-transform:uppercase;">Guilhem Angui</span>
+    </a>
+    <div style="display:flex; align-items:center; gap:34px; font-size:12.5px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase;">
+      <a href="#parcours" style="color:#cbc8c0; transition:color .25s;" style-hover="color:#ffffff;">Parcours</a>
+      <a href="#objectifs" style="color:#cbc8c0; transition:color .25s;" style-hover="color:#ffffff;">Objectifs</a>
+      <a href="#medias" style="color:#cbc8c0; transition:color .25s;" style-hover="color:#ffffff;">Médias</a>
+      <a href="#sponsoring" style="display:inline-flex; align-items:center; gap:8px; background:var(--accent,#e1621d); color:#0c0c0e; padding:10px 18px; font-weight:800; transition:transform .25s, filter .25s;" style-hover="transform:translateY(-2px); filter:brightness(1.12);">Devenir partenaire</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top" style="position:relative; width:100%; min-height:94vh; display:flex; align-items:flex-end; overflow:hidden;">
+    <video autoplay muted loop playsinline poster="assets/fight-smoke.png" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:grayscale(1) contrast(1.12) brightness(0.82); z-index:0; animation:slowZoom 18s ease-in-out infinite alternate;">
+      <!-- Déposez votre vidéo dans assets/hero.mp4 puis décommentez la ligne ci-dessous : -->
+      <!-- <source src="assets/hero.mp4" type="video/mp4"> -->
+    </video>
+    <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(12,12,14,0.97) 2%, rgba(12,12,14,0.35) 45%, rgba(12,12,14,0.55) 100%); z-index:1;"></div>
+    <div style="position:absolute; inset:0; background:linear-gradient(to right, rgba(12,12,14,0.6), transparent 55%); z-index:1;"></div>
+
+    <div style="position:relative; z-index:2; width:100%; max-width:1280px; margin:0 auto; padding:0 40px 66px;">
+      <div style="display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(255,255,255,0.22); padding:8px 14px; font-size:11.5px; letter-spacing:2.5px; text-transform:uppercase; color:#e7e4dc; margin-bottom:26px; white-space:nowrap; backdrop-filter:blur(4px);">
+        <span style="width:7px; height:7px; border-radius:50%; background:var(--accent,#e1621d);"></span>
+        Boxe Anglaise · Amateur Élite
+      </div>
+      <h1 style="font-family:'Anton',sans-serif; font-weight:400; font-size:clamp(64px,13vw,200px); line-height:0.84; letter-spacing:-1px; text-transform:uppercase;">
+        Guilhem <span style="color:var(--accent,#e1621d);">Angui</span>
+      </h1>
+      <p style="max-width:480px; margin-top:24px; font-size:16px; line-height:1.6; color:#cdcac2;">
+        « Écris ton histoire et marques les esprits. » Boxeur amateur, triple champion régional, en route vers le titre national.
+      </p>
+
+      <div style="margin-top:36px; display:inline-flex; align-items:stretch; flex-wrap:wrap; gap:0; border:1px solid rgba(255,255,255,0.2); background:rgba(12,12,14,0.45); backdrop-filter:blur(6px);">
+        <div style="padding:18px 26px; border-right:1px solid rgba(255,255,255,0.18);">
+          <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--accent,#e1621d); margin-bottom:8px; font-weight:700;">Prochain combat</div>
+          <div style="font-family:'Anton',sans-serif; font-size:26px; letter-spacing:0.5px;">15 NOV 2025</div>
+        </div>
+        <div style="padding:18px 26px; border-right:1px solid rgba(255,255,255,0.18); display:flex; flex-direction:column; justify-content:center;">
+          <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#a7a49c;">Lieu</div>
+          <div style="font-size:15px; font-weight:700;">Paris Arena</div>
+        </div>
+        <div style="padding:18px 26px; display:flex; flex-direction:column; justify-content:center;">
+          <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#a7a49c;">Enjeu</div>
+          <div style="font-size:15px; font-weight:700;">Championnat</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position:absolute; bottom:24px; right:40px; z-index:2; display:flex; align-items:center; gap:10px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#a7a49c;">
+      <span style="width:8px; height:8px; border-radius:50%; background:var(--accent,#e1621d); animation:none;"></span> Showreel · Le Noble Art
+    </div>
+  </header>
+
+  <!-- STATS -->
+  <section style="border-top:1px solid rgba(255,255,255,0.08); border-bottom:1px solid rgba(255,255,255,0.08);">
+    <div data-reveal style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr);">
+      <div style="padding:46px 30px; border-right:1px solid rgba(255,255,255,0.08);">
+        <div style="font-family:'Anton',sans-serif; font-size:64px; line-height:1; color:#f4f1ea;">30</div>
+        <div style="margin-top:10px; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:#8a877f;">Combats</div>
+      </div>
+      <div style="padding:46px 30px; border-right:1px solid rgba(255,255,255,0.08);">
+        <div style="font-family:'Anton',sans-serif; font-size:64px; line-height:1; color:var(--accent,#e1621d);">20</div>
+        <div style="margin-top:10px; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:#8a877f;">Victoires</div>
+      </div>
+      <div style="padding:46px 30px; border-right:1px solid rgba(255,255,255,0.08);">
+        <div style="font-family:'Anton',sans-serif; font-size:64px; line-height:1; color:#f4f1ea;">6</div>
+        <div style="margin-top:10px; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:#8a877f;">Victoires par KO</div>
+      </div>
+      <div style="padding:46px 30px;">
+        <div style="font-family:'Anton',sans-serif; font-size:64px; line-height:1; color:#5a5852;">10</div>
+        <div style="margin-top:10px; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:#8a877f;">Défaites</div>
+      </div>
+    </div>
+    <div data-reveal style="max-width:1280px; margin:0 auto; display:flex; gap:46px; flex-wrap:wrap; padding:0 30px 40px; font-size:14px; color:#b6b3ab;">
+      <div><span style="color:#8a877f; text-transform:uppercase; letter-spacing:1.5px; font-size:11px; margin-right:10px;">Taille</span><strong style="color:#f4f1ea;">1,90 m</strong></div>
+      <div><span style="color:#8a877f; text-transform:uppercase; letter-spacing:1.5px; font-size:11px; margin-right:10px;">Poids</span><strong style="color:#f4f1ea;">75 kg</strong></div>
+      <div><span style="color:#8a877f; text-transform:uppercase; letter-spacing:1.5px; font-size:11px; margin-right:10px;">Allonge des bras</span><strong style="color:#f4f1ea;">1,97 m</strong></div>
+    </div>
+  </section>
+
+  <!-- PARCOURS -->
+  <section id="parcours" style="max-width:1280px; margin:0 auto; padding:96px 40px;">
+    <div data-reveal style="display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:54px;">
+      <h2 style="font-family:'Anton',sans-serif; font-size:clamp(40px,6vw,82px); line-height:0.9; text-transform:uppercase;">Le Parcours</h2>
+      <p style="max-width:340px; font-size:14px; color:#b6b3ab; line-height:1.6;">De la passion d'un enfant de 5 ans aux rings internationaux — dix-sept ans de travail et de discipline.</p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:0.9fr 1.1fr; gap:54px; align-items:start;">
+      <div data-reveal style="position:sticky; top:96px;">
+        <div style="aspect-ratio:526/352; overflow:hidden; background:#141416;"><div style="width:100%; height:100%; background:#141416 url('assets/pads.png') center/cover; filter:grayscale(0.2) contrast(1.05); transition:transform .65s cubic-bezier(.16,.7,.25,1), filter .45s;" style-hover="transform:scale(1.07); filter:grayscale(0) contrast(1.08);"></div></div>
+        <div style="margin-top:18px; aspect-ratio:435/450; max-width:64%; overflow:hidden; background:#141416;"><div style="width:100%; height:100%; background:#141416 url('assets/coach-bw.png') center/cover; transition:transform .65s cubic-bezier(.16,.7,.25,1), filter .45s;" style-hover="transform:scale(1.07); filter:brightness(1.08);"></div></div>
+      </div>
+
+      <div>
+        <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="6">
+          <div data-reveal data-ri="{{ $index }}" style="display:grid; grid-template-columns:96px 1fr; gap:24px; padding:0 0 30px; position:relative;">
+            <div style="font-family:'Anton',sans-serif; font-size:30px; color:var(--accent,#e1621d); line-height:1;">{{ t.year }}</div>
+            <div style="border-left:1px solid rgba(255,255,255,0.12); padding:0 0 4px 26px; position:relative;">
+              <span style="position:absolute; left:-5px; top:6px; width:9px; height:9px; background:var(--accent,#e1621d); transform:rotate(45deg);"></span>
+              <div style="font-size:17px; font-weight:700; color:#f4f1ea; margin-bottom:6px;">{{ t.title }}</div>
+              <div style="font-size:14px; color:#9a978f; line-height:1.55;">{{ t.detail }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBJECTIFS -->
+  <section id="objectifs" style="position:relative; border-top:1px solid rgba(255,255,255,0.08);">
+    <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1fr 0.85fr; gap:0; align-items:stretch;">
+      <div data-reveal style="padding:96px 40px;">
+        <div style="font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--accent,#e1621d); font-weight:700; margin-bottom:18px;">Les Objectifs</div>
+        <h2 style="font-family:'Anton',sans-serif; font-size:clamp(36px,5vw,66px); line-height:0.92; text-transform:uppercase; margin-bottom:42px;">Voir les choses<br>en grand</h2>
+        <sc-for list="{{ objectifs }}" as="o" hint-placeholder-count="5">
+          <div data-reveal data-ri="{{ $index }}" style="display:flex; align-items:center; gap:20px; padding:20px 0; border-bottom:1px solid rgba(255,255,255,0.1);">
+            <span style="font-family:'Anton',sans-serif; font-size:15px; color:#5a5852; width:34px;">{{ o.num }}</span>
+            <span style="font-size:19px; font-weight:600; color:#f4f1ea;">{{ o.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div data-reveal style="position:relative; min-height:520px; overflow:hidden; background:#141416;">
+        <div style="position:absolute; inset:0; background:#141416 url('assets/fight-smoke.png') center/cover; transition:transform .8s cubic-bezier(.16,.7,.25,1);" style-hover="transform:scale(1.07);"></div>
+        <div style="position:absolute; inset:0; background:linear-gradient(120deg, rgba(12,12,14,0.85), rgba(12,12,14,0.1)); pointer-events:none;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEMOIGNAGE COACH -->
+  <section style="background:#0a0a0c; border-top:1px solid rgba(255,255,255,0.08); border-bottom:1px solid rgba(255,255,255,0.08);">
+    <div style="max-width:1280px; margin:0 auto; padding:96px 40px; display:grid; grid-template-columns:0.7fr 1.3fr; gap:54px; align-items:center;">
+      <div>
+        <div data-reveal style="aspect-ratio:369/367; overflow:hidden; background:#141416;"><div style="width:100%; height:100%; background:#141416 url('assets/portrait.png') center/cover; filter:grayscale(0.3); transition:transform .65s cubic-bezier(.16,.7,.25,1), filter .45s;" style-hover="transform:scale(1.06); filter:grayscale(0);"></div></div>
+        <div style="margin-top:16px; font-family:'Anton',sans-serif; font-size:15px; letter-spacing:1px; text-transform:uppercase;">Le mot du coach</div>
+        <div style="font-size:13px; color:#8a877f;">Son père & entraîneur</div>
+      </div>
+      <div>
+        <div style="font-family:'Anton',sans-serif; font-size:80px; line-height:0.6; color:var(--accent,#e1621d); height:44px;">“</div>
+        <blockquote data-reveal style="font-size:clamp(22px,2.6vw,34px); line-height:1.4; font-weight:500; color:#f4f1ea;">
+          Au-delà du fait que je sois son père, je suis très fier de lui. J'ai toujours su et vu en lui l'âme d'un grand boxeur. Guilhem, c'est quelqu'un d'intelligent, à l'écoute et clairvoyant. Comme j'aime lui dire souvent : <span style="color:var(--accent,#e1621d);">« Écris ton histoire et marques les esprits. »</span>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDIAS / NOBLE ART -->
+  <section id="medias" style="max-width:1280px; margin:0 auto; padding:96px 40px;">
+    <div data-reveal style="display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:46px;">
+      <h2 style="font-family:'Anton',sans-serif; font-size:clamp(40px,6vw,82px); line-height:0.9; text-transform:uppercase;">Galerie & Médias</h2>
+      <p style="max-width:360px; font-size:14px; color:#b6b3ab; line-height:1.6;">Le Noble Art — comprendre la boxe amateur, ses valeurs et ses compétitions.</p>
+    </div>
+
+    <a data-reveal href="#sponsoring" style="display:block; position:relative; aspect-ratio:16/7; background:#141416; margin-bottom:14px; overflow:hidden;">
+      <div style="position:absolute; inset:0; background:#141416 url('assets/noble-art-video.png') center/cover; transition:transform .7s cubic-bezier(.16,.7,.25,1);" style-hover="transform:scale(1.05);"></div>
+      <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,12,0.9), rgba(10,10,12,0.15)); pointer-events:none;"></div>
+      <div style="position:absolute; left:40px; bottom:34px; z-index:2; pointer-events:none;">
+        <div style="font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--accent,#e1621d); font-weight:700; margin-bottom:8px;">Vidéo</div>
+        <div style="font-family:'Anton',sans-serif; font-size:clamp(22px,3vw,40px); text-transform:uppercase; line-height:0.95;">Le Noble Art —<br>c'est quoi la boxe amateur ?</div>
+      </div>
+      <div style="position:absolute; right:44px; top:50%; transform:translateY(-50%); z-index:2; width:74px; height:74px; border-radius:50%; background:var(--accent,#e1621d); display:flex; align-items:center; justify-content:center; transition:transform .3s cubic-bezier(.16,.7,.25,1), box-shadow .3s;" style-hover="transform:translateY(-50%) scale(1.12); box-shadow:0 0 0 8px rgba(225,98,29,0.18);">
+        <span style="display:block; width:0; height:0; border-style:solid; border-width:13px 0 13px 22px; border-color:transparent transparent transparent #0c0c0e; margin-left:5px;"></span>
+      </div>
+    </a>
+
+    <div data-reveal style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:40px;">
+      <div style="background:#141416; padding:30px 26px; border:1px solid rgba(255,255,255,0.08); transition:transform .35s cubic-bezier(.16,.7,.25,1), border-color .35s, background .35s;" style-hover="transform:translateY(-6px); border-color:var(--accent,#e1621d); background:#1a1a1d;">
+        <div style="font-family:'Anton',sans-serif; font-size:21px; text-transform:uppercase; margin-bottom:12px;">Le Noble Art</div>
+        <p style="font-size:14px; line-height:1.6; color:#9a978f;">La boxe amateur est un sport incroyable : la fatigue due au long effort pour atteindre la victoire et le dépassement de soi-même est vite oubliée lorsque le combat prend fin.</p>
+      </div>
+      <div style="background:#141416; padding:30px 26px; border:1px solid rgba(255,255,255,0.08); transition:transform .35s cubic-bezier(.16,.7,.25,1), border-color .35s, background .35s;" style-hover="transform:translateY(-6px); border-color:var(--accent,#e1621d); background:#1a1a1d;">
+        <div style="font-family:'Anton',sans-serif; font-size:21px; text-transform:uppercase; margin-bottom:12px; color:var(--accent,#e1621d);">Ses valeurs</div>
+        <p style="font-size:14px; line-height:1.6; color:#9a978f;">Respect, discipline, humilité et dépassement de soi. Sur le ring comme en dehors, le noble art forge le caractère et impose une rigueur de chaque instant.</p>
+      </div>
+      <div style="background:#141416; padding:30px 26px; border:1px solid rgba(255,255,255,0.08); transition:transform .35s cubic-bezier(.16,.7,.25,1), border-color .35s, background .35s;" style-hover="transform:translateY(-6px); border-color:var(--accent,#e1621d); background:#1a1a1d;">
+        <div style="font-family:'Anton',sans-serif; font-size:21px; text-transform:uppercase; margin-bottom:12px;">Les compétitions</div>
+        <p style="font-size:14px; line-height:1.6; color:#9a978f;">Parmi les plus connues en France : le Championnat de France, les Ceintures Montana et les Ceintures des Vikings. Un sport au programme des Jeux Olympiques.</p>
+      </div>
+    </div>
+
+    <div data-reveal style="display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:14px;">
+      <div style="aspect-ratio:16/10; overflow:hidden; background:#141416;"><div style="width:100%; height:100%; background:#141416 url('assets/victory-ring.png') center/cover; filter:contrast(1.05); transition:transform .65s cubic-bezier(.16,.7,.25,1), filter .45s;" style-hover="transform:scale(1.06); filter:contrast(1.1) brightness(1.05);"></div></div>
+      <div style="aspect-ratio:16/10; overflow:hidden; background:#141416;"><div style="width:100%; height:100%; background:#141416 url('assets/sparring.png') center/cover; filter:grayscale(0.2); transition:transform .65s cubic-bezier(.16,.7,.25,1), filter .45s;" style-hover="transform:scale(1.06); filter:grayscale(0);"></div></div>
+      <div style="aspect-ratio:16/10; overflow:hidden; background:#141416;"><div style="width:100%; height:100%; background:#141416 url('assets/competition.png') center/cover; transition:transform .65s cubic-bezier(.16,.7,.25,1), filter .45s;" style-hover="transform:scale(1.06); filter:brightness(1.06);"></div></div>
+    </div>
+  </section>
+
+  <!-- PROJETS FUTURS -->
+  <section style="position:relative; background:#0a0a0c; border-top:1px solid rgba(255,255,255,0.08);">
+    <div style="max-width:1280px; margin:0 auto; padding:96px 40px;">
+      <div style="font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--accent,#e1621d); font-weight:700; margin-bottom:14px;">Projets futurs</div>
+      <h2 style="font-family:'Anton',sans-serif; font-size:clamp(44px,7vw,108px); line-height:0.88; text-transform:uppercase; max-width:880px; margin-bottom:54px;" data-reveal>Rêver toujours plus grand</h2>
+
+      <div data-reveal style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; border:1px solid rgba(255,255,255,0.1);">
+        <div style="padding:38px 34px; border-right:1px solid rgba(255,255,255,0.1);">
+          <div style="font-family:'Anton',sans-serif; font-size:19px; text-transform:uppercase; margin-bottom:16px;">Transmettre</div>
+          <p style="font-size:15px; line-height:1.65; color:#b6b3ab;">Après ma carrière sur le ring, une fois mes objectifs sportifs atteints, je souhaite transmettre ma passion et mon expérience.</p>
+        </div>
+        <div style="padding:38px 34px; border-right:1px solid rgba(255,255,255,0.1);">
+          <div style="font-family:'Anton',sans-serif; font-size:19px; text-transform:uppercase; margin-bottom:16px; color:var(--accent,#e1621d);">Ma vision long terme</div>
+          <p style="font-size:15px; line-height:1.65; color:#b6b3ab;">Ouvrir une salle de sport ouverte à tous : un lieu d'échange, de formation et de dépassement de soi, où j'accompagnerai et révélerai de jeunes talents.</p>
+        </div>
+        <div style="padding:38px 34px;">
+          <div style="font-family:'Anton',sans-serif; font-size:19px; text-transform:uppercase; margin-bottom:16px;">Entraîner, encadrer, inspirer</div>
+          <p style="font-size:15px; line-height:1.65; color:#b6b3ab;">C'est ma manière de rendre à la boxe tout ce qu'elle m'a apporté. Je vois grand, je vise loin, et je crois en la puissance du travail et de la passion.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPONSORING -->
+  <section id="sponsoring" style="position:relative; overflow:hidden;">
+    <div style="position:absolute; inset:0; background:#141416 url('assets/victory-bw.png') center 20%/cover; z-index:0;"></div>
+    <div style="position:absolute; inset:0; background:linear-gradient(to right, rgba(12,12,14,0.96), rgba(12,12,14,0.78)); z-index:1;"></div>
+    <div style="position:relative; z-index:2; max-width:1280px; margin:0 auto; padding:110px 40px;">
+      <h2 style="font-family:'Anton',sans-serif; font-size:clamp(40px,6.5vw,100px); line-height:0.9; text-transform:uppercase; max-width:980px;" data-reveal>Et si on marquait<br>l'histoire <span style="color:var(--accent,#e1621d);">ensemble</span> ?</h2>
+      <p style="max-width:600px; margin-top:26px; font-size:16px; line-height:1.65; color:#cbc8c0;">La participation aux compétitions ne peut se faire sans le soutien de partenaires et sponsors prêts à apporter une aide financière ou matérielle.</p>
+
+      <div data-reveal style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:50px;">
+        <div style="background:rgba(20,20,22,0.85); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,0.1); padding:38px 34px;">
+          <div style="font-family:'Anton',sans-serif; font-size:22px; text-transform:uppercase; margin-bottom:22px; color:var(--accent,#e1621d);">Vos bénéfices</div>
+          <sc-for list="{{ benefices }}" as="b" hint-placeholder-count="3">
+            <div style="display:flex; gap:14px; padding:13px 0; border-top:1px solid rgba(255,255,255,0.08); font-size:15px; line-height:1.55; color:#d8d5cd;">
+              <span style="color:var(--accent,#e1621d); flex:none;">→</span><span>{{ b }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="background:rgba(20,20,22,0.85); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,0.1); padding:38px 34px;">
+          <div style="font-family:'Anton',sans-serif; font-size:22px; text-transform:uppercase; margin-bottom:22px;">Mes engagements</div>
+          <sc-for list="{{ engagements }}" as="e" hint-placeholder-count="4">
+            <div style="display:flex; gap:14px; padding:13px 0; border-top:1px solid rgba(255,255,255,0.08); font-size:15px; line-height:1.55; color:#d8d5cd;">
+              <span style="color:var(--accent,#e1621d); flex:none;">→</span><span>{{ e }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div data-reveal style="margin-top:50px; display:flex; align-items:center; gap:30px; flex-wrap:wrap;">
+        <p style="font-family:'Anton',sans-serif; font-size:clamp(18px,2vw,26px); text-transform:uppercase; line-height:1.1; max-width:560px;">J'ai besoin de vous pour rester concentré sur mes objectifs et briller lors des compétitions.</p>
+        <a href="mailto:contact@guilhemangui.fr" style="display:inline-flex; align-items:center; gap:12px; background:var(--accent,#e1621d); color:#0c0c0e; padding:18px 32px; font-weight:800; font-size:15px; letter-spacing:1px; text-transform:uppercase; transition:transform .25s, box-shadow .25s;" style-hover="transform:translateY(-3px); box-shadow:0 14px 40px rgba(225,98,29,0.35);">Devenir partenaire <span>→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="border-top:1px solid rgba(255,255,255,0.08); padding:54px 40px;">
+    <div style="max-width:1280px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span style="width:11px; height:11px; background:var(--accent,#e1621d); display:inline-block; transform:rotate(45deg);"></span>
+        <span style="font-family:'Anton',sans-serif; font-size:18px; letter-spacing:2px; text-transform:uppercase;">Guilhem Angui</span>
+      </div>
+      <div style="display:flex; gap:28px; font-size:12.5px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:#8a877f;">
+        <a href="#" style="transition:color .25s;" style-hover="color:var(--accent,#e1621d);">Instagram</a>
+        <a href="#" style="transition:color .25s;" style-hover="color:var(--accent,#e1621d);">TikTok</a>
+        <a href="mailto:contact@guilhemangui.fr" style="transition:color .25s;" style-hover="color:var(--accent,#e1621d);">Contact</a>
+      </div>
+      <div style="font-size:12px; color:#5a5852;">© 2025 — Le Noble Art</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#e1621d&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;stickyNav&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    if (typeof window === 'undefined') return;
+    const setup = () => {
+      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const els = Array.from(document.querySelectorAll('[data-reveal]'));
+      if (!els.length) return;
+      if (reduce || !('IntersectionObserver' in window)) return;
+      els.forEach((el) => {
+        const d = (parseInt(el.getAttribute('data-ri'), 10) || 0) * 80;
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(34px)';
+        el.style.transition = 'opacity .85s cubic-bezier(.16,.7,.25,1) ' + d + 'ms, transform .85s cubic-bezier(.16,.7,.25,1) ' + d + 'ms';
+        el.style.willChange = 'opacity, transform';
+      });
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.style.opacity = '1';
+            e.target.style.transform = 'none';
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
+      els.forEach((el) => io.observe(el));
+    };
+    requestAnimationFrame(() => requestAnimationFrame(setup));
+  }
+  renderVals() {
+    return {
+      accent: this.props.accent ?? '#e1621d',
+      navPosition: (this.props.stickyNav ?? true) ? 'fixed' : 'absolute',
+      timeline: [
+        { year: '2005', title: 'La passion commence', detail: 'À 5 ans, Guilhem enfile ses premiers gants. Le ring devient son terrain de jeu.' },
+        { year: '2012', title: 'Débute la compétition', detail: 'À 12 ans, premiers combats officiels et premières sensations face à l\u2019adversaire.' },
+        { year: '2016', title: '17 victoires, 1 défaite', detail: '3× Champion de Seine-Saint-Denis et d\u2019Île-de-France. La régularité s\u2019installe.' },
+        { year: '2018', title: 'Devient boxeur amateur', detail: 'Passage dans la catégorie amateur et montée en intensité des entraînements.' },
+        { year: '2019', title: 'Champion d\u2019Île-de-France', detail: 'Titre régional Amateur Cadet — une étape clé dans la progression.' },
+        { year: '2022', title: '1er combat international', detail: 'Première sortie hors des frontières, conclue par une victoire décisive.' },
+      ],
+      objectifs: [
+        { num: '01', label: 'Champion d\u2019Île-de-France' },
+        { num: '02', label: 'Champion de France' },
+        { num: '03', label: 'Vainqueur des Ceintures Montana' },
+        { num: '04', label: 'Remporter des combats internationaux' },
+        { num: '05', label: 'Ne jamais arrêter de voir les choses en grand' },
+      ],
+      benefices: [
+        'Profiter de l\u2019image et de la beauté du noble art pour affirmer ses valeurs.',
+        'Faire de la publicité de manière originale et mémorable.',
+        'Véhiculer une image positive d\u2019aide et de soutien à un jeune athlète passionné.',
+      ],
+      engagements: [
+        'De la visibilité via ma page Instagram et mes publications TikTok.',
+        'Une initiation à la boxe, si vous le désirez, pour partager ma passion.',
+        'Votre logo sur mon équipement, mes panneaux publicitaires et mes photographies.',
+        'Une invitation à chacune de mes prestations de boxe.',
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+/* ============================================================
+   COLORS — a dark, near-black stage lit by one burnt-orange accent.
+   Saturation is near-zero everywhere except the accent.
+   ============================================================ */
+:root {
+  /* — Base surfaces (warm-tinted blacks) — */
+  --ga-bg:          #0c0c0e;  /* page background */
+  --ga-bg-alt:      #0a0a0c;  /* alternating / darker section */
+  --ga-surface:     #141416;  /* cards, image wells */
+  --ga-surface-2:   #1a1a1d;  /* card hover */
+
+  /* — Ink (warm off-whites → greys) — */
+  --ga-ink:         #f4f1ea;  /* primary text / headlines */
+  --ga-ink-soft:    #cdcac2;  /* lead paragraphs over imagery */
+  --ga-muted:       #9a978f;  /* body copy on dark */
+  --ga-muted-2:     #8a877f;  /* captions, meta labels */
+  --ga-faint:       #5a5852;  /* de-emphasised numerals, © */
+
+  /* — Accent (the only chroma in the system) — */
+  --ga-accent:      #e1621d;  /* burnt orange — CTAs, marks, key numbers */
+  --ga-accent-rgb:  225, 98, 29;
+  --ga-accent-glow: rgba(225, 98, 29, 0.18); /* focus ring / soft halo */
+  --ga-accent-shadow: rgba(225, 98, 29, 0.35); /* CTA hover shadow */
+
+  /* — Hairlines (white at low alpha; never solid grey) — */
+  --ga-line:        rgba(255, 255, 255, 0.08); /* default divider */
+  --ga-line-2:      rgba(255, 255, 255, 0.12); /* stronger frame */
+  --ga-line-3:      rgba(255, 255, 255, 0.20); /* over imagery */
+
+  /* — Overlays used to seat text on photos — */
+  --ga-scrim-bottom: linear-gradient(to top, rgba(12,12,14,0.97) 2%, rgba(12,12,14,0.35) 45%, rgba(12,12,14,0.55) 100%);
+  --ga-scrim-left:   linear-gradient(to right, rgba(12,12,14,0.96), rgba(12,12,14,0.78));
+
+  /* ---- Semantic aliases ---- */
+  --bg-page:        var(--ga-bg);
+  --bg-section-alt: var(--ga-bg-alt);
+  --surface-card:   var(--ga-surface);
+  --surface-card-hover: var(--ga-surface-2);
+  --text-primary:   var(--ga-ink);
+  --text-secondary: var(--ga-muted);
+  --text-caption:   var(--ga-muted-2);
+  --color-accent:   var(--ga-accent);
+  --border-hairline: var(--ga-line);
+}
