@@ -58,6 +58,37 @@
   }
   #nav-links.active { display: flex !important; }
 }
+@media (max-width: 768px) {
+    #parcours > div:last-child {
+      grid-template-columns: 1fr !important; /* Force 1 colonne sur mobile */
+    }
+    #parcours div[style*="position:sticky"] {
+      position: relative !important; /* Désactive le "sticky" qui est inutile sur mobile */
+      top: 0 !important;
+      margin-bottom: 40px;
+    }
+  }
+
+  @media (max-width: 900px) {
+  /* Pour les tablettes et petits écrans, on passe en 1 colonne */
+  section > div > div[data-reveal*="grid"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* On ajuste les bordures pour qu'elles restent propres */
+  section > div > div > div {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+  }
+  /* On enlève la bordure du dernier élément */
+  section > div > div > div:last-child {
+    border-bottom: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  h2 { font-size: 40px !important; } 
+}
 </style>
 </helmet>
 
@@ -239,16 +270,16 @@
       <div style="font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--accent,#e1621d); font-weight:700; margin-bottom:14px;">Projets futurs</div>
       <h2 style="font-family:'Anton',sans-serif; font-size:clamp(44px,7vw,108px); line-height:0.88; text-transform:uppercase; max-width:880px; margin-bottom:54px;" data-reveal>Rêver toujours plus grand</h2>
 
-      <div data-reveal style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; border:1px solid rgba(255,255,255,0.1);">
-        <div style="padding:38px 34px; border-right:1px solid rgba(255,255,255,0.1);">
+      <div data-reveal style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0; border:1px solid rgba(255,255,255,0.1);">
+        <div style="padding:38px 34px; border-right:1px solid rgba(255,255,255,0.1); border-bottom:1px solid rgba(255,255,255,0.1);">
           <div style="font-family:'Anton',sans-serif; font-size:19px; text-transform:uppercase; margin-bottom:16px;">Transmettre</div>
           <p style="font-size:15px; line-height:1.65; color:#b6b3ab;">Après ma carrière sur le ring, une fois mes objectifs sportifs atteints, je souhaite transmettre ma passion et mon expérience.</p>
         </div>
-        <div style="padding:38px 34px; border-right:1px solid rgba(255,255,255,0.1);">
+        <div style="padding:38px 34px; border-right:1px solid rgba(255,255,255,0.1); border-bottom:1px solid rgba(255,255,255,0.1);">
           <div style="font-family:'Anton',sans-serif; font-size:19px; text-transform:uppercase; margin-bottom:16px; color:var(--accent,#e1621d);">Ma vision long terme</div>
           <p style="font-size:15px; line-height:1.65; color:#b6b3ab;">Ouvrir une salle de sport ouverte à tous : un lieu d'échange, de formation et de dépassement de soi, où j'accompagnerai et révélerai de jeunes talents.</p>
         </div>
-        <div style="padding:38px 34px;">
+        <div style="padding:38px 34px; border-bottom:1px solid rgba(255,255,255,0.1);">
           <div style="font-family:'Anton',sans-serif; font-size:19px; text-transform:uppercase; margin-bottom:16px;">Entraîner, encadrer, inspirer</div>
           <p style="font-size:15px; line-height:1.65; color:#b6b3ab;">C'est ma manière de rendre à la boxe tout ce qu'elle m'a apporté. Je vois grand, je vise loin, et je crois en la puissance du travail et de la passion.</p>
         </div>
